@@ -1,10 +1,12 @@
+const base = import.meta.env.BASE_URL || '/';
+
 export const COLORWAYS = {
   lilac: {
     id: 'lilac',
     name: 'Lilac Dusk (Lavender Cream)',
     series: 'Signature Export Series',
     badge: 'Global Bestseller',
-    image: '/images/tas_rajut_lilac.png',
+    image: `${base}images/tas_rajut_lilac.png`,
     giantText: 'NUSA',
     accentColor: '#c084fc',
     bgGradient: 'radial-gradient(ellipse at 50% 40%, #7e22ce 0%, #4c1d95 45%, #230c4f 100%)',
@@ -16,7 +18,7 @@ export const COLORWAYS = {
     name: 'Sage Meadow (Eco Matcha)',
     series: 'Eco-Friendly Heritage',
     badge: '100% Sustainable Cotton',
-    image: '/images/tas_rajut_sage.png',
+    image: `${base}images/tas_rajut_sage.png`,
     giantText: 'ORGANIC',
     accentColor: '#34d399',
     bgGradient: 'radial-gradient(ellipse at 50% 40%, #059669 0%, #064e3b 45%, #022c22 100%)',
@@ -28,7 +30,7 @@ export const COLORWAYS = {
     name: 'Warm Terracotta (Artisan Spice)',
     series: 'Women Empowerment Series',
     badge: 'Handcrafted Heritage',
-    image: '/images/tas_rajut_terracotta.png',
+    image: `${base}images/tas_rajut_terracotta.png`,
     giantText: 'CRAFT',
     accentColor: '#fb923c',
     bgGradient: 'radial-gradient(ellipse at 50% 40%, #ea580c 0%, #9a3412 45%, #3d1305 100%)',
