@@ -1,75 +1,60 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ImpactMission from './components/ImpactMission';
-import Features from './components/Features';
-import Catalog from './components/Catalog';
-import SizeGuide from './components/SizeGuide';
-import Footer from './components/Footer';
-import OrderModal from './components/OrderModal';
-import { COLORWAYS } from './data/products';
+import TopBar from './components/TopBar';
+import Header from './components/Header';
+import ProductShowcase from './components/ProductShowcase';
+import LifestyleVideoBanner from './components/LifestyleVideoBanner';
+import StoryAndSpecs from './components/StoryAndSpecs';
+import HeritageDarkSection from './components/HeritageDarkSection';
+import SocialGallery from './components/SocialGallery';
+import LuxuryFooter from './components/LuxuryFooter';
+import OrderDrawerModal from './components/OrderDrawerModal';
 
 export default function App() {
   const [selectedColor, setSelectedColor] = useState('lilac');
   const [selectedSize, setSelectedSize] = useState('M');
   const [isOrderOpen, setIsOrderOpen] = useState(false);
 
-  const currentColor = COLORWAYS[selectedColor] || COLORWAYS.lilac;
-
   return (
-    <div className="min-h-screen bg-[#140b24] text-white flex flex-col justify-between selection:bg-purple-400 selection:text-black">
+    <div className="min-h-screen bg-white text-neutral-900 flex flex-col justify-between selection:bg-neutral-900 selection:text-white">
       
-      {/* Dynamic Hero Section with background transition */}
-      <div 
-        className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden transition-all duration-700 ease-out"
-        style={{
-          background: currentColor.bgGradient
-        }}
-      >
-        <Navbar onOpenOrder={() => setIsOrderOpen(true)} />
-        
-        <Hero 
-          selectedColor={selectedColor}
-          setSelectedColor={setSelectedColor}
-          selectedSize={selectedSize}
-          setSelectedSize={setSelectedSize}
-          onOpenOrder={() => setIsOrderOpen(true)}
-        />
+      {/* 1. Global Announcement Top Strip */}
+      <TopBar onOpenOrder={() => setIsOrderOpen(true)} />
 
-        {/* Scroll indicator */}
-        <div className="relative z-10 w-full text-center pb-4 pt-2">
-          <a 
-            href="#misi" 
-            className="inline-flex flex-col items-center text-white/60 hover:text-white transition gap-1 animate-bounce text-[10px] uppercase tracking-widest font-semibold"
-            aria-label="Scroll ke Bawah"
-          >
-            <span>Scroll Ke Bawah</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
-            </svg>
-          </a>
-        </div>
-      </div>
+      {/* 2. Main Luxury Header */}
+      <Header onOpenOrder={() => setIsOrderOpen(true)} />
 
-      {/* Main Content Sections */}
-      <ImpactMission />
-      <Features />
-      <Catalog 
-        onSelectColor={(colorKey) => setSelectedColor(colorKey)} 
-        onOpenOrder={() => setIsOrderOpen(true)} 
+      {/* 3. Hero Product Detail Showcase (Nixon Style 3-Column) */}
+      <ProductShowcase 
+        selectedColor={selectedColor}
+        setSelectedColor={setSelectedColor}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+        onOpenOrder={() => setIsOrderOpen(true)}
       />
-      <SizeGuide 
-        onSelectSize={(sizeKey) => setSelectedSize(sizeKey)} 
-      />
-      <Footer />
 
-      {/* WhatsApp Checkout Modal */}
-      <OrderModal 
+      {/* 4. Full-Width Lifestyle Campaign Banner (Play Video overlay) */}
+      <LifestyleVideoBanner onOpenOrder={() => setIsOrderOpen(true)} />
+
+      {/* 5. The Story & Signature Features Split Layout (Nixon Macro Style) */}
+      <StoryAndSpecs onOpenOrder={() => setIsOrderOpen(true)} />
+
+      {/* 6. Dark Heritage & Women Artisan Collective Section */}
+      <HeritageDarkSection onOpenOrder={() => setIsOrderOpen(true)} />
+
+      {/* 7. #NUSACROCHET Community Social Gallery */}
+      <SocialGallery />
+
+      {/* 8. Editorial Luxury Footer */}
+      <LuxuryFooter />
+
+      {/* 9. WhatsApp Order Drawer / Modal */}
+      <OrderDrawerModal 
         isOpen={isOrderOpen}
         onClose={() => setIsOrderOpen(false)}
         selectedColor={selectedColor}
         selectedSize={selectedSize}
       />
+
     </div>
   );
 }
